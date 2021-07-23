@@ -1,25 +1,36 @@
-<script src="https://cdn.jsdelivr.net/npm/vue"></script>
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+  <title>VueBrushUp</title>
+</head>
+<body>
+  <div id="app">
+    <p>{{message}}</p>
+    <button v-on:click="reverseMess">メッセージ反転</button>
+  </div>
 
-<div id="app">
-  <p>{{message}}</p>
-  <button v-on:click="reverseMess">メッセージ反転</button>
-</div>
+  <script>
+    new Vue({
+      // el はエレメント
+      // id="app"をターゲットにする
+      el: '#app',
+      data: {
+        // 呼び出し → {{message}} 
+        message: 'HelloWorld!!'
+      },
+      methods: {
+        reverseMess: function() {
+          // this.data.messageは間違い
+          // REF: https://www.freecodecamp.org/news/how-to-reverse-a-string-in-javascript-in-3-different-ways-75e4763c68cb/
+          this.message = this.message.split('').reverse().join('')
+        }
+      }
+    })
+  </script>
+</body>
+</html>
 
-<script>
-new Vue({
-  // el はエレメント
-  // id="app"をターゲットにする
-  el: '#app',
-  data: {
-    // 呼び出し → {{message}} 
-    message: 'HelloWorld!!'
-  },
-  methods: {
-    reverseMess: function() {
-      // this.data.messageは間違い
-      // REF: https://www.freecodecamp.org/news/how-to-reverse-a-string-in-javascript-in-3-different-ways-75e4763c68cb/
-      this.message = this.message.split('').reverse().join('')
-    }
-  }
-})
-</script>
