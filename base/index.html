@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="ja">
+
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -7,6 +8,7 @@
   <script src="https://cdn.jsdelivr.net/npm/vue"></script>
   <title>VueBrushUp</title>
 </head>
+
 <body>
   <div id="app">
     <p>{{message}}</p>
@@ -23,14 +25,14 @@
         message: 'HelloWorld!!'
       },
       methods: {
-        reverseMess: function() {
+        reverseMess: function () {
           // this.data.messageは間違い
           // REF: https://www.freecodecamp.org/news/how-to-reverse-a-string-in-javascript-in-3-different-ways-75e4763c68cb/
-          this.message = this.message.split('').reverse().join('')
+          this.message = this.message.split('').reverse().join('');
         }
       }
     })
   </script>
 </body>
-</html>
 
+</html>
