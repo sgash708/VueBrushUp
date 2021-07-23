@@ -1,0 +1,12 @@
+version: '3'
+
+services:
+  vuejs:
+    container_name: vuejs
+    build: ./docker/vue
+    ports:
+      - 8081:8081
+    volumes:
+      - ./frontend:/app
+    tty: true
+    stdin_open: true
