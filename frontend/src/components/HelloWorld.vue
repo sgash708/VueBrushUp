@@ -6,6 +6,7 @@
     <p>{{ ok ? 'YES' : 'NO' }}</p>
     <!-- 関数呼び出しもできる -->
     <p>{{ sayHi() }}</p>
+    <p>{{ useThisMethod() }}</p>
     <button v-on:click="reverseMess">メッセージ反転</button>
   </div>
 </template>
@@ -26,6 +27,9 @@ export default {
     },
     sayHi () {
       return 'Hi'
+    },
+    useThisMethod () {
+      return this.message
     }
   }
 }
