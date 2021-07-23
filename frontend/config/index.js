@@ -12,8 +12,9 @@ module.exports = {
     assetsPublicPath: '/',
     proxyTable: {},
 
-    // Various Dev Server settings
+    // dockerの場合は、'localhost' → '0.0.0.0'
     host: '0.0.0.0', // can be overwritten by process.env.HOST
+    // dockerにあわせて、'8081'
     port: 8081, // can be overwritten by process.env.PORT, if port is in use, a free one will be determined
     autoOpenBrowser: false,
     errorOverlay: true,

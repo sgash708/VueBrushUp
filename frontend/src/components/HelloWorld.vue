@@ -4,6 +4,8 @@
     <p>{{ number }}</p>
     <!-- 下記のように判定文も記述可能 -->
     <p>{{ ok ? 'YES' : 'NO' }}</p>
+    <!-- 関数呼び出しもできる -->
+    <p>{{ sayHi() }}</p>
     <button v-on:click="reverseMess">メッセージ反転</button>
   </div>
 </template>
@@ -19,8 +21,11 @@ export default {
     }
   },
   methods: {
-    reverseMess: function () {
+    reverseMess () {
       this.message = this.message.split('').reverse().join('')
+    },
+    sayHi () {
+      return 'Hi'
     }
   }
 }
