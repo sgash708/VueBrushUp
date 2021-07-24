@@ -12,12 +12,16 @@
     <p>{{ useThisMethod() }}</p>
 
     <!-- ディレクティブ(v-〇〇)(ex. v-text) -->
-    <!-- v-onceは、上書きされているのでHelloWorld!!は表示されない -->
+    <!-- v-once：上書きされているのでHelloWorld!!は表示されない -->
     <a v-once v-text="message"></a>
 
-    <!-- v-html: htmlのレンダリング -->
+    <!-- v-html：htmlのレンダリング -->
     <!-- 信頼あるコンテンツ(内部サービスなど)に使用する -->
     <div v-html="h1Tex"></div>
+
+    <!-- v-bind：省略して「:href」とすることもできる -->
+    <a v-bind:href="googleURL">google</a>
+    <a :href="googleURL">google</a>
   </div>
 </template>
 
@@ -29,7 +33,8 @@ export default {
       message: 'Hello World!!',
       number: 1,
       ok: true,
-      h1Tex: '<h1>こんにちは</h1>'
+      h1Tex: '<h1>こんにちは</h1>',
+      googleURL: 'https://www.google.com'
     }
   },
   methods: {
