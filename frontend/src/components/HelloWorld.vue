@@ -14,6 +14,10 @@
     <!-- ディレクティブ(v-〇〇)(ex. v-text) -->
     <!-- v-onceは、上書きされているのでHelloWorld!!は表示されない -->
     <a v-once v-text="message"></a>
+
+    <!-- v-html: htmlのレンダリング -->
+    <!-- 信頼あるコンテンツ(内部サービスなど)に使用する -->
+    <div v-html="h1Tex"></div>
   </div>
 </template>
 
@@ -24,7 +28,8 @@ export default {
     return {
       message: 'Hello World!!',
       number: 1,
-      ok: true
+      ok: true,
+      h1Tex: '<h1>こんにちは</h1>'
     }
   },
   methods: {
