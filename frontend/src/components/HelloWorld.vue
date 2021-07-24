@@ -2,12 +2,16 @@
   <div>
     <p class="hello">{{ message }}</p>
     <p>{{ number }}</p>
+    <button v-on:click="reverseMess">メッセージ反転</button>
+
     <!-- 下記のように判定文も記述可能 -->
     <p>{{ ok ? 'YES' : 'NO' }}</p>
     <!-- 関数呼び出しもできる -->
     <p>{{ sayHi() }}</p>
     <p>{{ useThisMethod() }}</p>
-    <button v-on:click="reverseMess">メッセージ反転</button>
+
+    <!-- ディレクティブ(v-〇〇)(ex. v-text) -->
+    <a v-text="message"></a>
   </div>
 </template>
 
