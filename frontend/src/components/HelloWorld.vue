@@ -1,6 +1,7 @@
 <template>
   <div>
-    <p class="hello">{{ message }}</p>
+    <!-- 関数が実行される前のプロパティを参照する -->
+    <p v-once>{{ message }}</p>
     <p>{{ number }}</p>
     <button v-on:click="reverseMess">メッセージ反転</button>
 
@@ -11,7 +12,8 @@
     <p>{{ useThisMethod() }}</p>
 
     <!-- ディレクティブ(v-〇〇)(ex. v-text) -->
-    <a v-text="message"></a>
+    <!-- v-onceは、上書きされているのでHelloWorld!!は表示されない -->
+    <a v-once v-text="message"></a>
   </div>
 </template>
 
@@ -30,6 +32,7 @@ export default {
       this.message = this.message.split('').reverse().join('')
     },
     sayHi () {
+      this.message = 'Hello Vue.js!!'
       return 'Hi'
     },
     useThisMethod () {
