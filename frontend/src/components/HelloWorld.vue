@@ -34,9 +34,10 @@
 
     <!-- v-on：マウス処理を追加できる-->
     <p>現在{{ number }}回クリックされています</p>
-    <button v-on:click="addCount">カウントアップ</button>
+    <button v-on:click="addCount(2)">カウントアップ</button>
 
-    <p v-on:mousemove="changeMousePosition">マウスを、のせてください</p>
+    <!-- $event とすることでeventオブジェクトを取得できる -->
+    <p v-on:mousemove="changeMousePosition(3, $event)">マウスを、のせてください</p>
     <p>マウス座標</p>
     <p>X:{{ x }}, Y:{{ y }}</p>
   </div>
@@ -75,13 +76,13 @@ export default {
     },
     // closureにしたほうが()記述なし
     // 上記は、引数がない場合に限る
-    addCount: function () {
-      this.number += 1
+    addCount: function (times) {
+      this.number += 1 * times
     },
     // 変数名は、eventじゃなくても問題ないけど「基本的に」eventを使う
-    changeMousePosition: function (event) {
-      this.x = event.clientX
-      this.y = event.clientY
+    changeMousePosition: function (divNum, event) {
+      this.x = event.clientX / divNum
+      this.y = event.clientY / divNum
     }
   }
 }
