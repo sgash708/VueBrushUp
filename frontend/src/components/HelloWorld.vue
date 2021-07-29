@@ -70,7 +70,7 @@ export default {
     // closureにしたほうが()記述なし
     // 上記は、引数がない場合に限る
     addCount: function () {
-      this.number = this.number + 1
+      this.number += 1
     }
   }
 }
