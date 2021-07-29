@@ -21,7 +21,15 @@
 
     <!-- v-bind：省略して「:href」とすることもできる -->
     <a v-bind:href="googleURL">google</a>
-    <a :href="googleURL">google</a>
+    <a :href="googleURL">Google</a>
+    <a :[attribute]="twitterURL">Twitter</a>
+
+    <!-- v-bindのオブジェクト形式で表記 -->
+    <!-- これだと冗長記述 -->
+    <a v-bind="{href: twitterURL, id: number}">Twitter</a>
+
+    <!-- L28を、さらにDRY -->
+    <a v-bind="twitterObject">Twitter</a>
   </div>
 </template>
 
@@ -34,7 +42,13 @@ export default {
       number: 1,
       ok: true,
       h1Tex: '<h1>こんにちは</h1>',
-      googleURL: 'https://www.google.com'
+      attribute: 'href',
+      googleURL: 'https://www.google.com',
+      twitterURL: 'https://twitter.com',
+      twitterObject: {
+        href: 'https://twitter.com',
+        id: 1
+      }
     }
   },
   methods: {
