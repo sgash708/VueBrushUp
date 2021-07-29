@@ -29,9 +29,12 @@
     <!-- v-bindのオブジェクト形式で表記 -->
     <!-- これだと冗長記述 -->
     <a v-bind="{href: twitterURL, id: number}">Twitter</a>
-
     <!-- L28を、さらにDRY -->
     <a v-bind="twitterObject">Twitter</a>
+
+    <!-- v-on：マウス処理を追加できる-->
+    <p>現在{{ number }}回クリックされています</p>
+    <button v-on:click="addCount">カウントアップ</button>
   </div>
 </template>
 
@@ -41,7 +44,7 @@ export default {
   data () {
     return {
       message: 'Hello World!!',
-      number: 1,
+      number: 0,
       ok: true,
       h1Tex: '<h1>こんにちは</h1>',
       attribute: 'href',
@@ -63,6 +66,11 @@ export default {
     },
     useThisMethod () {
       return this.message
+    },
+    // closureにしたほうが()記述なし
+    // 上記は、引数がない場合に限る
+    addCount: function () {
+      this.number = this.number + 1
     }
   }
 }
