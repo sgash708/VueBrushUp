@@ -22,6 +22,8 @@
     <!-- v-bind：省略して「:href」とすることもできる -->
     <a v-bind:href="googleURL">google</a>
     <a :href="googleURL">Google</a>
+
+    <!-- :[プロパティ]="プロパティ"のような記述もできる -->
     <a :[attribute]="twitterURL">Twitter</a>
 
     <!-- v-bindのオブジェクト形式で表記 -->
