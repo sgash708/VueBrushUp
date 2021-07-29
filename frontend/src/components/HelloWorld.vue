@@ -35,6 +35,10 @@
     <!-- v-on：マウス処理を追加できる-->
     <p>現在{{ number }}回クリックされています</p>
     <button v-on:click="addCount">カウントアップ</button>
+
+    <p v-on:mousemove="changeMousePosition">マウスを、のせてください</p>
+    <p>マウス座標</p>
+    <p>X:{{ x }}, Y:{{ y }}</p>
   </div>
 </template>
 
@@ -53,7 +57,9 @@ export default {
       twitterObject: {
         href: 'https://twitter.com',
         id: 1
-      }
+      },
+      x: 0,
+      y: 0
     }
   },
   methods: {
@@ -71,6 +77,11 @@ export default {
     // 上記は、引数がない場合に限る
     addCount: function () {
       this.number += 1
+    },
+    // 変数名は、eventじゃなくても問題ないけど「基本的に」eventを使う
+    changeMousePosition: function (event) {
+      this.x = event.clientX
+      this.y = event.clientY
     }
   }
 }
