@@ -112,6 +112,16 @@ export default {
       return this.number > 3 ? '3以上' : '3以下'
     }
   },
+  // watch：データが変わった時(非同期処理)に使う
+  watch: {
+    number: function () {
+      var vm = this
+      // 非同期処理を使う際には、関数内部でthisが使えないのでvarで置き換える
+      setTimeout(function () {
+        vm.number = 0
+      }, 3000)
+    }
+  },
   methods: {
     reverseMess () {
       this.message = this.message.split('').reverse().join('')
