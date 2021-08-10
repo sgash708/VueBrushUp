@@ -57,6 +57,10 @@
     <button v-on:[event]="addCount(1)">カウントアップ</button>
     <!-- "v-on" or "@ディレクティブ" を使うかは統一をしたほうが良い -->
     <button @click="addCount(1)">カウントアップ</button>
+
+    <!-- v-model：双方向データバインディングが可能になる -->
+    <input type="text" v-model="message">
+    <h1>{{ message }}</h1>
   </div>
 </template>
 
