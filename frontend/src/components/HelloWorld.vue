@@ -61,12 +61,19 @@
     <!-- v-model：双方向データバインディングが可能になる -->
     <input type="text" v-model="message">
     <h1>{{ message }}</h1>
+
+    <!-- computedプロパティ：動的な表現が可能 -->
+    <button @click="number += 1">+1</button>
+    <!-- <p>{{ number > 3 ? '3以上' : '3以下' }}</p> -->
+    <p>{{ lessThanThree }}</p>
   </div>
 </template>
 
 <script>
 export default {
   name: 'HelloWorld',
+  // "data" は初期値を入れるところ
+  // 静的につかう
   data () {
     return {
       message: 'Hello World!!',
@@ -83,6 +90,15 @@ export default {
       x: 0,
       y: 0,
       event: 'click'
+      // アンチパターン
+      // lessThanThree: this.number > 3 ? '3以上' : '3以下'
+    }
+  },
+  // computedは動的なプロパティのように扱う
+  // 呼び出しは、"{{ lessThanThree }}" のように使用する
+  computed: {
+    lessThanThree: function () {
+      return this.number > 3 ? '3以上' : '3以下'
     }
   },
   methods: {
