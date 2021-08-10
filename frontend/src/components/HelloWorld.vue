@@ -51,6 +51,12 @@
     <!-- v-on:key-up キーを離した瞬間に発火させる -->
     <!-- "keyup.space" "keyup.enter" などがある -->
     <input type="text" v-on:keyup.enter="myAlert">
+
+    <!-- v-onの引数に "[]" を使って動的に表現する -->
+    <!-- propertyにclickが割り当ててあるので修正 -->
+    <button v-on:[event]="addCount(1)">カウントアップ</button>
+    <!-- "v-on" or "@ディレクティブ" を使うかは統一をしたほうが良い -->
+    <button @click="addCount(1)">カウントアップ</button>
   </div>
 </template>
 
@@ -71,7 +77,8 @@ export default {
         id: 1
       },
       x: 0,
-      y: 0
+      y: 0,
+      event: 'click'
     }
   },
   methods: {
