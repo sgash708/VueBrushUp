@@ -37,9 +37,17 @@
     <button v-on:click="addCount(2)">カウントアップ</button>
 
     <!-- $event とすることでeventオブジェクトを取得できる -->
-    <p v-on:mousemove="changeMousePosition(3, $event)">マウスを、のせてください</p>
+    <p v-on:mousemove="changeMousePosition(3, $event)">
+      マウスを、のせてください
+      <span v-on:mousemove.stop>
+        <!-- stopイベントで親処理を発火させない -->
+        反応しないでください
+      </span>
+    </p>
     <p>マウス座標</p>
     <p>X:{{ x }}, Y:{{ y }}</p>
+    <!-- preventでタグの処理をさせない(クリックさせないetc) -->
+    <a v-on:click.prevent href="https://google.com">Google</a>
   </div>
 </template>
 
@@ -84,6 +92,14 @@ export default {
       this.x = event.clientX / divNum
       this.y = event.clientY / divNum
     }
+    // 代用："v-on:mousemove.stop"
+    // noEvent: function (event) {
+    //   event.stopPropagation()
+    // },
+    // 代用："v-on:click.prevent"
+    // noClick: function(event) {
+    //   event.preventDefault
+    // }
   }
 }
 </script>
