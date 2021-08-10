@@ -48,6 +48,9 @@
     <p>X:{{ x }}, Y:{{ y }}</p>
     <!-- preventでタグの処理をさせない(クリックさせないetc) -->
     <a v-on:click.prevent href="https://google.com">Google</a>
+    <!-- v-on:key-up キーを離した瞬間に発火させる -->
+    <!-- "keyup.space" "keyup.enter" などがある -->
+    <input type="text" v-on:keyup.enter="myAlert">
   </div>
 </template>
 
@@ -91,7 +94,7 @@ export default {
     changeMousePosition: function (divNum, event) {
       this.x = event.clientX / divNum
       this.y = event.clientY / divNum
-    }
+    },
     // 代用："v-on:mousemove.stop"
     // noEvent: function (event) {
     //   event.stopPropagation()
@@ -100,6 +103,9 @@ export default {
     // noClick: function(event) {
     //   event.preventDefault
     // }
+    myAlert: function () {
+      alert('アラート!')
+    }
   }
 }
 </script>
