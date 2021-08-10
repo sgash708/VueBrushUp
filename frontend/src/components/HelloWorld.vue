@@ -66,6 +66,13 @@
     <button @click="number += 1">+1</button>
     <!-- <p>{{ number > 3 ? '3以上' : '3以下' }}</p> -->
     <p>{{ lessThanThree }}</p>
+    <!-- 別の要素が変更されても再読み込みされる -->
+    <!-- 実際にはcomputedを使うこと！！ -->
+    <!-- <p>{{ lessThanThreeMethod() }}</p> -->
+
+    <!-- methodとcomputedの違いの表現 -->
+    <p>{{ otherCount }}</p>
+    <button @click="otherCount += 1">別のカウンター</button>
   </div>
 </template>
 
@@ -89,13 +96,17 @@ export default {
       },
       x: 0,
       y: 0,
-      event: 'click'
+      event: 'click',
       // アンチパターン
       // lessThanThree: this.number > 3 ? '3以上' : '3以下'
+
+      // 処理の違いについての表現
+      otherCount: 0
     }
   },
   // computedは動的なプロパティのように扱う
   // 呼び出しは、"{{ lessThanThree }}" のように使用する
+  // 参照している要素が変更された場合には呼び出される
   computed: {
     lessThanThree: function () {
       return this.number > 3 ? '3以上' : '3以下'
@@ -133,6 +144,12 @@ export default {
     myAlert: function () {
       alert('アラート!')
     }
+    // methodは、動的プロパティと同じ振る舞い
+    // しかし、 {{  }} で呼び出し際には要素が変わるたびにメソッドをcallしていなくても実行される
+    // キャッシュを持たないためページレンダリングに影響が出ると考える
+    // lessThanThreeMethod: function () {
+    //   return this.number > 3 ? '3以上' : '3以下'
+    // }
   }
 }
 </script>
