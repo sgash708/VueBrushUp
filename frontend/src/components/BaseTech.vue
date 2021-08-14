@@ -96,6 +96,10 @@
     <!-- v-bindのプロパティに絡めた出力方法 -->
     <!-- <h1 :style="{color: textColor, 'background-color': bgColor}">hoge</h1> -->
     <h1 :style="styleObject">hoge</h1>
+
+    <!-- 配列構文はobjectを複数記述したい時に使う -->
+    <!-- object要素を追加できる -->
+    <h1 :style="[styleObject, baseStyles]">hoge</h1>
   </div>
 </template>
 
@@ -134,6 +138,9 @@ export default {
       styleObject: {
         color: 'red',
         'background-color': 'blue'
+      },
+      baseStyles: {
+        fontSize: '60px'
       }
     }
   },
