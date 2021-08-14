@@ -92,6 +92,9 @@
     <!-- 別のバインディング方法 -->
     <!-- 赤色だけは動的にしたい場合 -->
     <h1 :class="[{ red: isActive }, bg]">Hello</h1>
+
+    <!-- v-bindのプロパティに絡めた出力方法 -->
+    <h1 :style="{color: textColor, 'background-color': bgColor}">hoge</h1>
   </div>
 </template>
 
@@ -124,7 +127,9 @@ export default {
       // 処理の違いについての表現
       otherCount: 0,
       color: 'red',
-      bg: 'bg-blue'
+      bg: 'bg-blue',
+      textColor: 'red',
+      bgColor: 'blue'
     }
   },
   // computedは動的なプロパティのように扱う
