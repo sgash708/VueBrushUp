@@ -94,7 +94,8 @@
     <h1 :class="[{ red: isActive }, bg]">Hello</h1>
 
     <!-- v-bindのプロパティに絡めた出力方法 -->
-    <h1 :style="{color: textColor, 'background-color': bgColor}">hoge</h1>
+    <!-- <h1 :style="{color: textColor, 'background-color': bgColor}">hoge</h1> -->
+    <h1 :style="styleObject">hoge</h1>
   </div>
 </template>
 
@@ -126,10 +127,14 @@ export default {
 
       // 処理の違いについての表現
       otherCount: 0,
-      color: 'red',
-      bg: 'bg-blue',
+      // color: 'red',
+      // bg: 'bg-blue',
       textColor: 'red',
-      bgColor: 'blue'
+      bgColor: 'blue',
+      styleObject: {
+        color: 'red',
+        'background-color': 'blue'
+      }
     }
   },
   // computedは動的なプロパティのように扱う
