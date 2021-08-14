@@ -1,9 +1,9 @@
 import Vue from 'vue'
-import HelloWorld from '@/components/HelloWorld'
+import BaseTech from '@/components/BaseTech'
 
-describe('HelloWorld.vue', () => {
+describe('BaseTech.vue', () => {
   it('should render correct contents', () => {
-    const Constructor = Vue.extend(HelloWorld)
+    const Constructor = Vue.extend(BaseTech)
     const vm = new Constructor().$mount()
     expect(vm.$el.querySelector('.hello p').textContent)
       .toEqual('Hello World!!')

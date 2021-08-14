@@ -12,7 +12,7 @@
     <p>{{ useThisMethod() }}</p>
 
     <!-- ディレクティブ(v-〇〇)(ex. v-text) -->
-    <!-- v-once：上書きされているのでHelloWorld!!は表示されない -->
+    <!-- v-once：上書きされているのでBaseTech!!は表示されない -->
     <a v-once v-text="message"></a>
 
     <!-- v-html：htmlのレンダリング -->
@@ -78,7 +78,7 @@
 
 <script>
 export default {
-  name: 'HelloWorld',
+  name: 'BaseTech',
   // "data" は初期値を入れるところ
   // 静的につかう
   data () {
