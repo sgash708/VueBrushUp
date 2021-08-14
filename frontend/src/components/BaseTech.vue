@@ -88,6 +88,10 @@
     <!-- 否定文なら"!"で表現 -->
     <h1 :class="classObject">Hello</h1>
     <button @click="changeActiveBgBlue">切り替え</button>
+
+    <!-- 別のバインディング方法 -->
+    <!-- 赤色だけは動的にしたい場合 -->
+    <h1 :class="[{ red: isActive }, bg]">Hello</h1>
   </div>
 </template>
 
@@ -118,7 +122,9 @@ export default {
       // lessThanThree: this.number > 3 ? '3以上' : '3以下'
 
       // 処理の違いについての表現
-      otherCount: 0
+      otherCount: 0,
+      color: 'red',
+      bg: 'bg-blue'
     }
   },
   // computedは動的なプロパティのように扱う
