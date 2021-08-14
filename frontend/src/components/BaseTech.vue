@@ -73,6 +73,15 @@
     <!-- methodとcomputedの違いの表現 -->
     <p>{{ otherCount }}</p>
     <button @click="otherCount += 1">別のカウンター</button>
+
+    <!-- 丸括弧の表現の違いについて -->
+    <!-- v-onディレクティブは丸括弧が "あってもなくても良い" -->
+    <!-- ""内では、インラインメソッドとしてjsの式として評価されるため -->
+    <button @click="countUp()">+1メソッド</button>
+    <!-- computedは丸括弧を "付けない！" -->
+    <p>{{ doubleComputed }}</p>
+    <!-- methodは丸括弧を "必須！" -->
+    <p>{{ doubleMethod() }}</p>
   </div>
 </template>
 
@@ -85,6 +94,7 @@ export default {
     return {
       message: 'Hello World!!',
       number: 0,
+      counter: 0,
       ok: true,
       h1Tex: '<h1>こんにちは</h1>',
       attribute: 'href',
@@ -110,6 +120,9 @@ export default {
   computed: {
     lessThanThree: function () {
       return this.number > 3 ? '3以上' : '3以下'
+    },
+    doubleComputed: function () {
+      return this.counter * 2
     }
   },
   // watch：データが変わった時(非同期処理)に使う
@@ -153,13 +166,19 @@ export default {
     // }
     myAlert: function () {
       alert('アラート!')
-    }
+    },
     // methodは、動的プロパティと同じ振る舞い
     // しかし、 {{  }} で呼び出し際には要素が変わるたびにメソッドをcallしていなくても実行される
     // キャッシュを持たないためページレンダリングに影響が出る
     // lessThanThreeMethod: function () {
     //   return this.number > 3 ? '3以上' : '3以下'
     // }
+    countUp: function () {
+      this.counter += 1
+    },
+    doubleMethod: function () {
+      return this.counter * 2
+    }
   }
 }
 </script>
