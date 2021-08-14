@@ -82,6 +82,12 @@
     <p>{{ doubleComputed }}</p>
     <!-- methodは丸括弧を "必須！" -->
     <p>{{ doubleMethod() }}</p>
+
+    <!-- v-bind：クラスにデータを紐づける -->
+    <!-- ":"で省略することもできる！また、ケバブケース('bg-blue')の場合シングルクォートで括る -->
+    <!-- 否定文なら"!"で表現 -->
+    <h1 :class="classObject">Hello</h1>
+    <button @click="changeActiveBgBlue">切り替え</button>
   </div>
 </template>
 
@@ -95,6 +101,7 @@ export default {
       message: 'Hello World!!',
       number: 0,
       counter: 0,
+      isActive: true,
       ok: true,
       h1Tex: '<h1>こんにちは</h1>',
       attribute: 'href',
@@ -123,6 +130,13 @@ export default {
     },
     doubleComputed: function () {
       return this.counter * 2
+    },
+    classObject: function () {
+      return {
+        // data要素はjs内ではthisをつけてアクセスする
+        red: this.isActive,
+        'bg-blue': !this.isActive
+      }
     }
   },
   // watch：データが変わった時(非同期処理)に使う
@@ -178,6 +192,9 @@ export default {
     },
     doubleMethod: function () {
       return this.counter * 2
+    },
+    changeActiveBgBlue: function () {
+      this.isActive = !this.isActive
     }
   }
 }

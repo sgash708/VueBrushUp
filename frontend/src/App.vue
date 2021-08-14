@@ -19,4 +19,10 @@ export default {
   color: #2c3e50;
   margin-top: 60px;
 }
+.red {
+  color: red;
+}
+.bg-blue {
+  background-color: blue;
+}
 </style>
