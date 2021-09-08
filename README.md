@@ -10,3 +10,8 @@ https://zenn.dev/tet0h/articles/docker-vuejs
     * v-html
     * v-bind
     * v-on
+    * v-model
+    * computedプロパティ
+    * methodとcomputedの違い
+    * 丸括弧の表現について
+
