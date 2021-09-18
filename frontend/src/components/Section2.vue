@@ -1,88 +1,224 @@
 <template>
   <div>
-    <!-- templateはグループ化して条件分岐することができる -->
-    <!-- ここにもv-ifディレクティブを使うことができる -->
-    <template v-if="renderTemplate">
-      <!-- v-elseはv-ifのすぐ下に来ないといけない -->
-      <!-- v-else-ifでelseの間に挟むこと -->
-      <p v-if="ok">OK!!</p>
-      <p v-else-if="mayBeOk">MayBe OK!!</p>
-      <p v-else>Not OK...</p>
-    </template>
-    <button @click="renderTemplate = !renderTemplate">反転</button>
+    <!-- 関数が実行される前のプロパティを参照する -->
+    <p v-once>{{ message }}</p>
+    <p>{{ number }}</p>
+    <button v-on:click="reverseMess">メッセージ反転</button>
 
-    <!-- v-show：CSSベースで"display:none;"に変更させる -->
-    <!-- → v-showはtemplateのように存在しないタグにはdisplay_noneを追加することができない -->
-    <!-- → デメリット：v-showは一度HTMLとして読み込むため表示コストが嵩む -->
+    <!-- 下記のように判定文も記述可能 -->
+    <p>{{ ok ? 'YES' : 'NO' }}</p>
+    <!-- 関数呼び出しもできる -->
+    <p>{{ sayHi() }}</p>
+    <p>{{ useThisMethod() }}</p>
 
-    <!-- v-if：完全にタグごと削除してくれる -->
-    <!-- → デメリット：v-ifはHTMLを都度削除しているため「頻繁に行われる処理」(e.x 文字が多くなると処理速度)に影響する -->
+    <!-- ディレクティブ(v-〇〇)(ex. v-text) -->
+    <!-- v-once：上書きされているのでBaseTech!!は表示されない -->
+    <a v-once v-text="message"></a>
 
-    <!-- 使い分け -->
-    <!-- → v-show：「頻繁にきりかわる場合」 -->
-    <!-- → v-if：「実行時に条件が変わらない場合」 -->
-    <p v-show="ok">v-showでの表示</p>
-    <button @click="ok = !ok">ok要素の反転</button>
+    <!-- v-html：htmlのレンダリング -->
+    <!-- 信頼あるコンテンツ(内部サービスなど)に使用する -->
+    <div v-html="h1Tex"></div>
 
-    <ul>
-      <!-- v-for：「単数 in 配列」 -->
-      <!-- v-for：「(単数, index) in 配列」 -->
-      <!-- → 'of'としての使用可能「(単数, index) of 配列」 -->
-      <li v-for="(fruit, index) in fruits">{{ index }}：{{ fruit }}</li>
-    </ul>
+    <!-- v-bind：省略して「:href」とすることもできる -->
+    <a v-bind:href="googleURL">google</a>
+    <a :href="googleURL">Google</a>
 
-    <ul>
-      <!-- v-for：「(value, key, index) in 配列」 -->
-      <li v-for="(v, k, index) in object">{{ index }}：{{ k }}：{{ v }}</li>
-    </ul>
+    <!-- :[プロパティ]="プロパティ"のような記述もできる -->
+    <a :[attribute]="twitterURL">Twitter</a>
 
-    <ul>
-      <!-- hrタグも含めてループして描画したい場合は、templateタグを使うと便利 -->
-      <template v-for="fruit in fruits">
-        <li>{{ fruit }}</li>
-        <hr>
-      </template>
-    </ul>
+    <!-- v-bindのオブジェクト形式で表記 -->
+    <!-- これだと冗長記述 -->
+    <a v-bind="{href: twitterURL, id: number}">Twitter</a>
+    <!-- L28を、さらにDRY -->
+    <a v-bind="twitterObject">Twitter</a>
 
-    <ul>
-      <!-- 整数値を利用しても描画可能 -->
-      <li v-for="n in 10">{{ n }}</li>
-    </ul>
+    <!-- v-on：マウス処理を追加できる-->
+    <p>現在{{ number }}回クリックされています</p>
+    <button v-on:click="addCount(2)">カウントアップ</button>
 
-    <!-- key属性の重要性 -->
-    <ul>
-      <!-- 各フルーツに「inputタグとの対応づけ」にして、inputタグまでを一塊とする -->
-      <!-- key属性をつけていないと、配列から要素を一つ削除した時に対応していないinputタグだけが残るバグが発生する -->
-      <div v-for="fruit in fruits" :key="fruit">
-        <p>{{ fruit }}</p>
-        <input type="text">
-      </div>
-    </ul>
-    <button @click="remove">先頭を削除</button>
+    <!-- $event とすることでeventオブジェクトを取得できる -->
+    <p v-on:mousemove="changeMousePosition(3, $event)">
+      マウスを、のせてください
+      <span v-on:mousemove.stop>
+        <!-- stopイベントで親処理を発火させない -->
+        反応しないでください
+      </span>
+    </p>
+    <p>マウス座標</p>
+    <p>X:{{ x }}, Y:{{ y }}</p>
+    <!-- preventでタグの処理をさせない(クリックさせないetc) -->
+    <a v-on:click.prevent href="https://google.com">Google</a>
+    <!-- v-on:key-up キーを離した瞬間に発火させる -->
+    <!-- "keyup.space" "keyup.enter" などがある -->
+    <input type="text" v-on:keyup.enter="myAlert">
+
+    <!-- v-onの引数に "[]" を使って動的に表現する -->
+    <!-- propertyにclickが割り当ててあるので修正 -->
+    <button v-on:[event]="addCount(1)">カウントアップ</button>
+    <!-- "v-on" or "@ディレクティブ" を使うかは統一をしたほうが良い -->
+    <button @click="addCount(1)">カウントアップ</button>
+
+    <!-- v-model：双方向データバインディングが可能になる -->
+    <input type="text" v-model="message">
+    <h1>{{ message }}</h1>
+
+    <!-- computedプロパティ：動的な表現が可能 -->
+    <button @click="number += 1">+1</button>
+    <!-- <p>{{ number > 3 ? '3以上' : '3以下' }}</p> -->
+    <p>{{ lessThanThree }}</p>
+    <!-- 別の要素が変更されても再読み込みされる -->
+    <!-- 実際にはcomputedを使うこと！！ -->
+    <!-- <p>{{ lessThanThreeMethod() }}</p> -->
+
+    <!-- methodとcomputedの違いの表現 -->
+    <p>{{ otherCount }}</p>
+    <button @click="otherCount += 1">別のカウンター</button>
+
+    <!-- 丸括弧の表現の違いについて -->
+    <!-- v-onディレクティブは丸括弧が "あってもなくても良い" -->
+    <!-- ""内では、インラインメソッドとしてjsの式として評価されるため -->
+    <button @click="countUp()">+1メソッド</button>
+    <!-- computedは丸括弧を "付けない！" -->
+    <p>{{ doubleComputed }}</p>
+    <!-- methodは丸括弧を "必須！" -->
+    <p>{{ doubleMethod() }}</p>
+
+    <!-- v-bind：クラスにデータを紐づける -->
+    <!-- ":"で省略することもできる！また、ケバブケース('bg-blue')の場合シングルクォートで括る -->
+    <!-- 否定文なら"!"で表現 -->
+    <h1 :class="classObject">Hello</h1>
+    <button @click="changeActiveBgBlue">切り替え</button>
+
+    <!-- 別のバインディング方法 -->
+    <!-- 赤色だけは動的にしたい場合 -->
+    <h1 :class="[{ red: isActive }, bg]">Hello</h1>
+
+    <!-- v-bindのプロパティに絡めた出力方法 -->
+    <!-- <h1 :style="{color: textColor, 'background-color': bgColor}">hoge</h1> -->
+    <h1 :style="styleObject">hoge</h1>
+
+    <!-- 配列構文はobjectを複数記述したい時に使う -->
+    <!-- object要素を追加できる -->
+    <h1 :style="[styleObject, baseStyles]">hoge</h1>
   </div>
 </template>
 
 <script>
-  export default {
-    // REF: https://jp.vuejs.org/v2/guide/components.html#data-%E3%81%AF%E9%96%A2%E6%95%B0%E3%81%A7%E3%81%AA%E3%81%91%E3%82%8C%E3%81%B0%E3%81%AA%E3%82%8A%E3%81%BE%E3%81%9B%E3%82%93
-    data() {
-      return {
-        renderTemplate: true,
-        ok: false,
-        mayBeOk: true,
-        fruits: ['banana', 'apple', 'lemon'],
-        // objectは連想配列のように使える
-        object: {
-          lastName: 'hoge',
-          firstName: 'taro',
-          age: 21,
-        }
-      }
-    },
-    methods: {
-      remove: function () {
-        this.fruits.shift();
+export default {
+  name: 'BaseTech',
+  // "data" は初期値を入れるところ
+  // 静的につかう
+  data () {
+    return {
+      message: 'Hello World!!',
+      number: 0,
+      counter: 0,
+      isActive: true,
+      ok: true,
+      h1Tex: '<h1>こんにちは</h1>',
+      attribute: 'href',
+      googleURL: 'https://www.google.com',
+      twitterURL: 'https://twitter.com',
+      twitterObject: {
+        href: 'https://twitter.com',
+        id: 1
+      },
+      x: 0,
+      y: 0,
+      event: 'click',
+      // アンチパターン
+      // lessThanThree: this.number > 3 ? '3以上' : '3以下'
+
+      // 処理の違いについての表現
+      otherCount: 0,
+      // color: 'red',
+      // bg: 'bg-blue',
+      textColor: 'red',
+      bgColor: 'blue',
+      styleObject: {
+        color: 'red',
+        'background-color': 'blue'
+      },
+      baseStyles: {
+        fontSize: '60px'
       }
     }
+  },
+  // computedは動的なプロパティのように扱う
+  // 呼び出しは、"{{ lessThanThree }}" のように使用する
+  // 参照している要素が変更された場合には呼び出される
+  computed: {
+    lessThanThree: function () {
+      return this.number > 3 ? '3以上' : '3以下'
+    },
+    doubleComputed: function () {
+      return this.counter * 2
+    },
+    classObject: function () {
+      return {
+        // data要素はjs内ではthisをつけてアクセスする
+        red: this.isActive,
+        'bg-blue': !this.isActive
+      }
+    }
+  },
+  // watch：データが変わった時(非同期処理)に使う
+  watch: {
+    number: function () {
+      var vm = this
+      // 非同期処理を使う際には、関数内部でthisが使えないのでvarで置き換える
+      setTimeout(function () {
+        vm.number = 0
+      }, 3000)
+    }
+  },
+  methods: {
+    reverseMess () {
+      this.message = this.message.split('').reverse().join('')
+    },
+    sayHi () {
+      this.message = 'Hello Vue.js!!'
+      return 'Hi'
+    },
+    useThisMethod () {
+      return this.message
+    },
+    // closureにしたほうが()記述なし
+    // 上記は、引数がない場合に限る
+    addCount: function (times) {
+      this.number += 1 * times
+    },
+    // 変数名は、eventじゃなくても問題ないけど「基本的に」eventを使う
+    changeMousePosition: function (divNum, event) {
+      this.x = event.clientX / divNum
+      this.y = event.clientY / divNum
+    },
+    // 代用："v-on:mousemove.stop"
+    // noEvent: function (event) {
+    //   event.stopPropagation()
+    // },
+    // 代用："v-on:click.prevent"
+    // noClick: function(event) {
+    //   event.preventDefault
+    // }
+    myAlert: function () {
+      alert('アラート!')
+    },
+    // methodは、動的プロパティと同じ振る舞い
+    // しかし、 {{  }} で呼び出し際には要素が変わるたびにメソッドをcallしていなくても実行される
+    // キャッシュを持たないためページレンダリングに影響が出る
+    // lessThanThreeMethod: function () {
+    //   return this.number > 3 ? '3以上' : '3以下'
+    // }
+    countUp: function () {
+      this.counter += 1
+    },
+    doubleMethod: function () {
+      return this.counter * 2
+    },
+    changeActiveBgBlue: function () {
+      this.isActive = !this.isActive
+    }
   }
+}
 </script>
