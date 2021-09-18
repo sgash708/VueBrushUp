@@ -42,6 +42,11 @@
         <hr>
       </template>
     </ul>
+
+    <ul>
+      <!-- 整数値を利用しても描画可能 -->
+      <li v-for="n in 10">{{ n }}</li>
+    </ul>
   </div>
 </template>
 
