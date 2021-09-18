@@ -27,6 +27,7 @@
     <ul>
       <!-- v-for：「単数 in 配列」 -->
       <!-- v-for：「(単数, index) in 配列」 -->
+      <!-- → 'of'としての使用可能「(単数, index) of 配列」 -->
       <li v-for="(fruit, index) in fruits">{{ index }}：{{ fruit }}</li>
     </ul>
 
