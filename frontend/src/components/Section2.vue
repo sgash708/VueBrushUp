@@ -48,6 +48,17 @@
       <!-- 整数値を利用しても描画可能 -->
       <li v-for="n in 10">{{ n }}</li>
     </ul>
+
+    <!-- key属性の重要性 -->
+    <ul>
+      <!-- 各フルーツに「inputタグとの対応づけ」にして、inputタグまでを一塊とする -->
+      <!-- key属性をつけていないと、配列から要素を一つ削除した時に対応していないinputタグだけが残るバグが発生する -->
+      <div v-for="fruit in fruits" :key="fruit">
+        <p>{{ fruit }}</p>
+        <input type="text">
+      </div>
+    </ul>
+    <button @click="remove">先頭を削除</button>
   </div>
 </template>
 
@@ -60,11 +71,17 @@
         ok: false,
         mayBeOk: true,
         fruits: ['banana', 'apple', 'lemon'],
+        // objectは連想配列のように使える
         object: {
           lastName: 'hoge',
           firstName: 'taro',
           age: 21,
         }
+      }
+    },
+    methods: {
+      remove: function () {
+        this.fruits.shift();
       }
     }
   }
