@@ -1,6 +1,8 @@
 <template>
   <div>
-    <p v-if="ok">Boolean</p>
+    <!-- v-elseはv-ifのすぐ下に来ないといけない -->
+    <p v-if="ok">OK</p>
+    <p v-else>Not OK...</p>
   </div>
 </template>
 
