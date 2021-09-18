@@ -34,6 +34,14 @@
       <!-- v-for：「(value, key, index) in 配列」 -->
       <li v-for="(v, k, index) in object">{{ index }}：{{ k }}：{{ v }}</li>
     </ul>
+
+    <ul>
+      <!-- hrタグも含めてループして描画したい場合は、templateタグを使うと便利 -->
+      <template v-for="fruit in fruits">
+        <li>{{ fruit }}</li>
+        <hr>
+      </template>
+    </ul>
   </div>
 </template>
 
