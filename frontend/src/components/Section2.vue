@@ -31,7 +31,8 @@
     </ul>
 
     <ul>
-      <li v-for="v in object">{{ v }}</li>
+      <!-- v-for：「(value, key, index) in 配列」 -->
+      <li v-for="(v, k, index) in object">{{ index }}：{{ k }}：{{ v }}</li>
     </ul>
   </div>
 </template>
