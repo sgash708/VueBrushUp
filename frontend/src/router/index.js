@@ -2,6 +2,7 @@ import Vue from 'vue'
 import Router from 'vue-router'
 import Section1 from '@/components/Section1'
 import Section2 from '@/components/Section2'
+import Section3 from '@/components/Section3'
 
 Vue.use(Router)
 
@@ -17,6 +18,11 @@ export default new Router({
       path: '/section2',
       name: 'Section2',
       component: Section2
+    },
+    {
+      path: '/section3',
+      name: 'Section3',
+      component: Section3
     },
   ]
 })
