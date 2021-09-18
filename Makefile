@@ -5,4 +5,4 @@ up:
 down:
 	docker-compose down
 exec:
-	docker-compose exec vuejs bash
+	docker-compose exec vuejs sh

@@ -9,7 +9,7 @@ export default new Router({
   // https://qiita.com/hshota28/items/765cf903f055754f7557/#導入
   mode: 'history',
   routes: [{
-      path: '/section',
+      path: '/section1',
       name: 'Section1',
       component: Section1
     },
