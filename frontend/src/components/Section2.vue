@@ -23,6 +23,11 @@
     <!-- → v-if：「実行時に条件が変わらない場合」 -->
     <p v-show="ok">v-showでの表示</p>
     <button @click="ok = !ok">ok要素の反転</button>
+
+    <ul>
+      <!-- v-for：「単数 in 配列」 -->
+      <li v-for="fruit in fruits">{{ fruit }}</li>
+    </ul>
   </div>
 </template>
 
@@ -34,6 +39,7 @@
         renderTemplate: true,
         ok: false,
         mayBeOk: true,
+        fruits: ['banana', 'apple', 'lemon']
       }
     }
   }
