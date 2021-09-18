@@ -26,7 +26,8 @@
 
     <ul>
       <!-- v-for：「単数 in 配列」 -->
-      <li v-for="fruit in fruits">{{ fruit }}</li>
+      <!-- v-for：「(単数, index) in 配列」 -->
+      <li v-for="(fruit, index) in fruits">{{ index }}：{{ fruit }}</li>
     </ul>
   </div>
 </template>
