@@ -1,17 +1,28 @@
 <template>
   <div>
-    <!-- templateはグループ化をすることができる -->
+    <!-- templateはグループ化して条件分岐することができる -->
     <!-- ここにもv-ifディレクティブを使うことができる -->
     <template v-if="renderTemplate">
-      <p>表示されている</p>
       <!-- v-elseはv-ifのすぐ下に来ないといけない -->
       <!-- v-else-ifでelseの間に挟むこと -->
       <p v-if="ok">OK!!</p>
       <p v-else-if="mayBeOk">MayBe OK!!</p>
       <p v-else>Not OK...</p>
     </template>
-    <p v-else>表示しない</p>
     <button @click="renderTemplate = !renderTemplate">反転</button>
+
+    <!-- v-show：CSSベースで"display:none;"に変更させる -->
+    <!-- → v-showはtemplateのように存在しないタグにはdisplay_noneを追加することができない -->
+    <!-- → デメリット：v-showは一度HTMLとして読み込むため表示コストが嵩む -->
+
+    <!-- v-if：完全にタグごと削除してくれる -->
+    <!-- → デメリット：v-ifはHTMLを都度削除しているため「頻繁に行われる処理」(e.x 文字が多くなると処理速度)に影響する -->
+
+    <!-- 使い分け -->
+    <!-- → v-show：「頻繁にきりかわる場合」 -->
+    <!-- → v-if：「実行時に条件が変わらない場合」 -->
+    <p v-show="ok">v-showでの表示</p>
+    <button @click="ok = !ok">ok要素の反転</button>
   </div>
 </template>
 
