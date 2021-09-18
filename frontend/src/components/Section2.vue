@@ -29,6 +29,10 @@
       <!-- v-for：「(単数, index) in 配列」 -->
       <li v-for="(fruit, index) in fruits">{{ index }}：{{ fruit }}</li>
     </ul>
+
+    <ul>
+      <li v-for="v in object">{{ v }}</li>
+    </ul>
   </div>
 </template>
 
@@ -40,7 +44,12 @@
         renderTemplate: true,
         ok: false,
         mayBeOk: true,
-        fruits: ['banana', 'apple', 'lemon']
+        fruits: ['banana', 'apple', 'lemon'],
+        object: {
+          lastName: 'hoge',
+          firstName: 'taro',
+          age: 21,
+        }
       }
     }
   }
