@@ -1,6 +1,6 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import Section1 from '@/components/Section1'
+import Map from '@/components/Map'
 import Section2 from '@/components/Section2'
 import Section3 from '@/components/Section3'
 
@@ -10,11 +10,6 @@ export default new Router({
   // https://qiita.com/hshota28/items/765cf903f055754f7557/#導入
   mode: 'history',
   routes: [{
-      path: '/section1',
-      name: 'Section1',
-      component: Section1
-    },
-    {
       path: '/section2',
       name: 'Section2',
       component: Section2
@@ -23,6 +18,11 @@ export default new Router({
       path: '/section3',
       name: 'Section3',
       component: Section3
+    },
+    {
+      path: '/map',
+      name: 'Map',
+      component: Map
     },
   ]
 })
