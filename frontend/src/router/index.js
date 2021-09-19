@@ -1,5 +1,6 @@
 import Vue from 'vue'
 import Router from 'vue-router'
+import LMap from 'vue2-leaflet'
 import Map from '@/components/Map'
 import Section2 from '@/components/Section2'
 import Section3 from '@/components/Section3'
@@ -22,7 +23,10 @@ export default new Router({
     {
       path: '/map',
       name: 'Map',
-      component: Map
+      components: {
+        Map,
+        LMap
+      }
     },
   ]
 })
