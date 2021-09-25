@@ -1,3 +1,7 @@
+<!-- singleファイルコンポーネントは、「template」「script」「style」で構成されることが多い -->
+<!-- → タグは全部なくても問題ない -->
+<!-- → 今回はルーティングを使っているので<router-view/>に依存している -->
+<!-- → router/index.jsでのルーティングを<router-view>に集約 -->
 <template>
   <div id="app">
     <router-view />
