@@ -40,7 +40,11 @@
       // L94. $emitを使って親コンポーネントに渡す
       // $emitはカスタムイベントを作り親コンポーネントを発火させる
       increment() {
-        this.$emit("my-click", this.totalNumber++)
+        /*
+          L95. 子は親のデータは書き換えられない！
+          だから、this.totalNumber++みたいな記述はできない！
+        */
+        this.$emit("my-click", this.totalNumber + 1)
       }
     }
   }
