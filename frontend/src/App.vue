@@ -10,6 +10,9 @@
     <RouterView />
     <!-- ローカル登録は、App.vueに書く -->
     <!-- <Section6></Section6> -->
+
+    <h1>トータルのいいね数</h1>
+    <h2>{{ number }}</h2>
   </div>
 </template>
 
@@ -20,9 +23,13 @@ export default {
   name: 'App',
   // L81. ES6では同じ名前を定義することでコロンで記述しなくて良い
   // Section6: Section6
-  // components: {
-  //   Section6
-  // }
+
+  // L88. 親子間のコンポーネントでデータを受け渡す
+  data() {
+    return {
+      number: 10
+    }
+  }
 }
 </script>
 
