@@ -1,4 +1,5 @@
 <template>
+  <!-- L81. templateのルートの要素は必ず一つにすること -->
   <div>
     <p>{{number}}<button @click='increment()'>+1</button></p>
     <p>{{number}}<button @click='increment()'>+1</button></p>
