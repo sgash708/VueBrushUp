@@ -34,6 +34,7 @@ export default new Router({
       props: {
         // L92. 各コンポーネントでデフォルト値で記述し、なくすこともできる
         // totalNumber: 10
+        testProps: "test"
       }
     },
     {

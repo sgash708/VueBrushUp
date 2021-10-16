@@ -1,6 +1,7 @@
 <template>
   <div>
     <h1>いいね{{ halfNumber }}</h1>
+    <h1>複数個のProps：{{ testProps }}</h1>
   </div>
 </template>
 
@@ -8,7 +9,8 @@
   export default {
     // L89. 子コンポーネントを配列受け取る
     // L90. キャメルケースで記述してケバブケースで出力する
-    // props: ['totalNumber'],
+    // L93. 複数個記述する場合は配列に要素を追加する
+    // props: ['totalNumber', "testProps"],
 
     /*
       L92. propsは、オブジェクトでも受け取れる。
@@ -21,6 +23,9 @@
         // required: true,
         // L92. requiredと共存できないのでデフォルト値を書くときには注意する
         default: 10
+      },
+      testProps: {
+        type: String,
       }
     },
     computed: {
