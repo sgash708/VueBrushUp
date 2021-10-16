@@ -32,7 +32,8 @@ export default new Router({
       name: 'Section7',
       component: Section7,
       props: {
-        totalNumber: 10
+        // L92. 各コンポーネントでデフォルト値で記述し、なくすこともできる
+        // totalNumber: 10
       }
     },
     {
