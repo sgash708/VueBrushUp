@@ -5,12 +5,21 @@
 <template>
   <div id="app">
     <router-view />
+    <!-- ローカル登録は、App.vueに -->
+    <Section6></Section6>
   </div>
 </template>
 
 <script>
+import Section6 from '@/components/Section6.vue'
+
 export default {
-  name: 'App'
+  name: 'App',
+  // L81. ES6では同じ名前を定義することでコロンで記述しなくて良い
+  // Section6: Section6
+  components: {
+    Section6
+  }
 }
 </script>
 
