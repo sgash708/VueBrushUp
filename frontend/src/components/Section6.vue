@@ -30,5 +30,17 @@
   }
   /*
     L80. styleタグは、中身が空だったらタグは削除する
+    L85. styleタグは、全てのファイルに適用されてしまうので
+        <style scoped>と記述する
   */
 </script>
+
+<!--
+<style scoped>
+/*
+div {
+  border: 1px solid red;
+}
+*/
+</style>
+-->

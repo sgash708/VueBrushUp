@@ -9,20 +9,20 @@
     <!-- "しかし" JSfiddleなどでは、DOMテンプレートを使う際にはHTMLが先行して読み込まれるので"ケバブケース"にすること！ -->
     <RouterView />
     <!-- ローカル登録は、App.vueに書く -->
-    <Section6></Section6>
+    <!-- <Section6></Section6> -->
   </div>
 </template>
 
 <script>
-import Section6 from '@/components/Section6.vue'
+// import Section6 from '@/components/Section6.vue'
 
 export default {
   name: 'App',
   // L81. ES6では同じ名前を定義することでコロンで記述しなくて良い
   // Section6: Section6
-  components: {
-    Section6
-  }
+  // components: {
+  //   Section6
+  // }
 }
 </script>
 
@@ -41,4 +41,9 @@ export default {
 .bg-blue {
   background-color: blue;
 }
+/*
+div {
+  border: 1px solid blue;
+}
+*/
 </style>
