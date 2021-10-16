@@ -2,6 +2,7 @@
   <div>
     <h1>いいね{{ halfNumber }}</h1>
     <h1>複数個のProps：{{ testProps }}</h1>
+    <button @click='increment()'>+1</button>
   </div>
 </template>
 
@@ -26,12 +27,20 @@
       },
       testProps: {
         type: String,
+        default: "hoge"
       }
     },
     computed: {
       halfNumber() {
         // L91. コンポーネント内でpropsを扱う場合は、this.totalNumberのようにアクセスする
         return this.totalNumber / 2
+      }
+    },
+    methods: {
+      // L94. $emitを使って親コンポーネントに渡す
+      // $emitはカスタムイベントを作り親コンポーネントを発火させる
+      increment() {
+        this.$emit("my-click", this.totalNumber++)
       }
     }
   }

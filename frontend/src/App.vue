@@ -7,17 +7,20 @@
     <!-- L84. パスカルケース(RouterView)コンポーネントとした場合、ケバブケース(router-view)やキャメルケース(routerView)でも記述できる -->
     <!-- パスカルケース統一がおすすめ → HTMLは大文字小文字を認識できなく要素はケバブケースが多いので、一眼でコンポーネントだと理解できるため -->
     <!-- "しかし" JSfiddleなどでは、DOMテンプレートを使う際にはHTMLが先行して読み込まれるので"ケバブケース"にすること！ -->
-    <RouterView />
+    <!-- <RouterView /> -->
     <!-- ローカル登録は、App.vueに書く -->
     <!-- <Section6></Section6> -->
 
+    <Section7 :total-number="number" @my-click="incrementNumber"></Section7>
     <h1>トータルのいいね数</h1>
-    <h2>{{ number }}</h2>
+    <h2>{{number}}</h2>
+
   </div>
 </template>
 
 <script>
 // import Section6 from '@/components/Section6.vue'
+import Section7 from '@/components/Section7.vue'
 
 export default {
   name: 'App', 
@@ -33,6 +36,14 @@ export default {
   data() {
     return {
       number: 10
+    }
+  },
+  components: {
+    Section7
+  },
+  methods: {
+    incrementNumber(value) {
+      this.number = value
     }
   }
 }
