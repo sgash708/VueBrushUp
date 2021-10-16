@@ -1,12 +1,31 @@
-// The Vue build version to load with the `import` command
-// (runtime-only or standalone) has been set in webpack.base.conf with an alias.
 import Vue from 'vue'
+// L78. vue-loaderが".vue"を読み込み、単一ファイルコンポーネントを理解する
+// vueファイルをimportして、コンポーネントのオブジェクトにする
 import App from './App.vue'
 import router from './router'
 import 'leaflet/dist/leaflet.css'
 
 // L71. 開発用のコメント出力
 Vue.config.productionTip = false
+
+/*
+  L78. "App"の中身はこんな感じ
+  {
+    "name": "App",
+    "staticRenderFns": [],
+    "_compiled": true,
+    "beforeCreate": [
+      null,
+      null
+    ],
+    "__file": "src/App.vue",
+    "beforeDestroy": [
+      null
+    ],
+    "_Ctor": {}
+  }
+ */
+console.log(App)
 
 // L77. ローカルコンポーネント
 // var component = {
@@ -16,6 +35,7 @@ Vue.config.productionTip = false
 //     }
 //   }
 // }
+
 // #appは、index.htmlに挿入される。
 new Vue({
   router,
