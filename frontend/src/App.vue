@@ -20,11 +20,16 @@
 // import Section6 from '@/components/Section6.vue'
 
 export default {
-  name: 'App',
-  // L81. ES6では同じ名前を定義することでコロンで記述しなくて良い
-  // Section6: Section6
+  name: 'App', 
+  /*
+    L81. ES6では同じ名前を定義することでコロンで記述しなくて良い
+    components: {
+      Section6: Section6
+    }
+  */
 
   // L88. 親子間のコンポーネントでデータを受け渡す
+  // L90. propsはケバブケースで渡すのがオススメ
   data() {
     return {
       number: 10
