@@ -4,8 +4,11 @@
 <!-- → router/index.jsでのルーティングを<router-view>に集約 -->
 <template>
   <div id="app">
-    <router-view />
-    <!-- ローカル登録は、App.vueに -->
+    <!-- L84. パスカルケース(RouterView)コンポーネントとした場合、ケバブケース(router-view)やキャメルケース(routerView)でも記述できる -->
+    <!-- パスカルケース統一がおすすめ → HTMLは大文字小文字を認識できなく要素はケバブケースが多いので、一眼でコンポーネントだと理解できるため -->
+    <!-- "しかし" JSfiddleなどでは、DOMテンプレートを使う際にはHTMLが先行して読み込まれるので"ケバブケース"にすること！ -->
+    <RouterView />
+    <!-- ローカル登録は、App.vueに書く -->
     <Section6></Section6>
   </div>
 </template>
