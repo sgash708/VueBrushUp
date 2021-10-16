@@ -7,6 +7,7 @@
 </template>
 
 <script>
+  // L77. グローバル登録
   export default {
     // L75. componentでは、"data"は関数として使用する
     /*
