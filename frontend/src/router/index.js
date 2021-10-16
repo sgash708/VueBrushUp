@@ -32,7 +32,7 @@ export default new Router({
       name: 'Section7',
       component: Section7,
       props: {
-        number: 10
+        totalNumber: 10
       }
     },
     {
