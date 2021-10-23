@@ -16,9 +16,9 @@
     <h2>{{number}}</h2> -->
 
     <!-- Section8 -->
-    <Section8 headerText="トータルのいいね数">
-      <!-- <h1>トータルのいいね数</h1>
-      <h1>{{ number }}</h1> -->
+    <Section8>
+      <h1>トータルのいいね数</h1>
+      <h1>{{ number }}</h1>
     </Section8>
   </div>
 </template>

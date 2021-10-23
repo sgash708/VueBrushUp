@@ -1,11 +1,12 @@
 <template>
   <div>
-    <h1>{{ headerText }}</h1>
+    <!-- L101. propsでは複数送れなかったのが、"HTML"をまとめて送信することができる -->
+    <!-- L101. v-ifやv-forも使うことができる -->
+    <slot></slot>
   </div>
 </template>
 
 <script>
   export default {
-    props: ['headerText']
   }
 </script>
