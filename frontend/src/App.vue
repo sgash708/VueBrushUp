@@ -77,10 +77,14 @@
     <!-- <About v-if="currentComp === 'About'"></About>
     <Home v-if="currentComp === 'Home'"></Home> -->
 
-    <!-- L113. "is:動的な値"とすることで、切り替えが簡単になる -->
-    <!-- L114. destoryによってコンポーネントを削除して再作成しているのでコストがかかる -->
-    <!-- → 動的コンポーネントは状態を保持しないのでコンポーネントを切り替えたら削除される点に注意すること -->
-    <component :is="currentComp"></component>
+    <!-- L115. 動的コンポーネントの状態保持はkeep-aliveによって避けることができる -->
+    <!-- → destroyedを実行しなくなる -->
+    <keep-alive>
+      <!-- L113. "is:動的な値"とすることで、切り替えが簡単になる -->
+      <!-- L114. destoryによってコンポーネントを削除して再作成しているのでコストがかかる -->
+      <!-- → 動的コンポーネントは状態を保持しないのでコンポーネントを切り替えたら削除される点に注意すること -->
+      <component :is="currentComp"></component>
+    </keep-alive>
   </div>
 </template>
 
