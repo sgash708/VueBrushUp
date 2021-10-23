@@ -7,7 +7,7 @@
       <h1>こんにちは</h1>
     </slot> -->
     <!-- L102. スコープの概念について、親コンポーネントは子コンポーネントにアクセスはできない。 -->
-    <h1>{{ headerText }}</h1>
+    <!-- <h1>{{ headerText }}</h1> -->
 
     <!-- L104. slotは複数配置することができる -->
     <hr>
@@ -21,15 +21,28 @@
     <!-- L105. デフォルトスロットは、名前付きslotを除いて"新しい名前付きスロット"を作成します。 -->
     <!-- → <slot name="default"></slot> も同じ意味になる -->
     <slot></slot>
+
+    <hr>
+    <!-- L107. slotPropertyを使うことで子コンポーネントにアクセスできる。 -->
+    <!-- → 使い方： <slot name="親コンポーネントのv-slotの名前(sl)" :定義したい名前="dataプロパティの何か"></slot> -->
+    <slot name="sl" :user="user"></slot>
   </div>
 </template>
 
 <script>
   export default {
-    props: {
-      headerText: {
-        type: String,
-        default: null
+    // props: {
+    //   headerText: {
+    //     type: String,
+    //     default: null
+    //   }
+    // },
+    data() {
+      return {
+        user: {
+          firstName: "Jack",
+          lastName: "nico"
+        }
       }
     }
   }

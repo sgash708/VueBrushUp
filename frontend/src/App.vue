@@ -16,7 +16,7 @@
     <h2>{{number}}</h2> -->
 
     <!-- Section8 -->
-    <Section8 headerText="hello">
+    <Section8>
       <!-- L103. フォールバックコンテンツ(Slotが空の場合) -->
       <!-- <h1>トータルのいいね数</h1>
       <h1>{{ number }}</h1> -->
@@ -37,6 +37,12 @@
 
       <!-- L106. v-slotはtemplate以外はエラーが出力される -->
       <!-- <div v-slot:hoge></div> -->
+
+      <!-- L107. スロットプロパティを使って子コンポーネントにデータアクセス -->
+      <template v-slot:sl="slotProperty">
+        <p>{{ slotProperty.user.firstName }}</p>
+        <p>{{ slotProperty.user.lastName }}</p>
+      </template>
     </Section8>
   </div>
 </template>
