@@ -15,7 +15,6 @@
     <!-- <h1>トータルのいいね数</h1>
     <h2>{{number}}</h2> -->
 
-    <!-- Section8 -->
     <Section8>
       <!-- L103. フォールバックコンテンツ(Slotが空の場合) -->
       <!-- <h1>トータルのいいね数</h1>
@@ -70,6 +69,16 @@
     <!-- <Section8 v-slot="slotProperty">
       <template v-slot:title="slotProperty"></template>
     </Section8> -->
+
+    <!-- L113. 複数コンポーネントの切り替え -->
+    <!-- → 切り替えが面倒なのでVue.jsでは、componentタグを使う -->
+    <button @click="currentComp = 'Home'">Home</button>
+    <button @click="currentComp = 'About'">About</button>
+    <!-- <About v-if="currentComp === 'About'"></About>
+    <Home v-if="currentComp === 'Home'"></Home> -->
+
+    <!-- L113. "is:動的な値"とすることで、切り替えが簡単になる -->
+    <component :is="currentComp"></component>
   </div>
 </template>
 
@@ -77,6 +86,10 @@
   // import Section6 from '@/components/Section6.vue'
   // import Section7 from '@/components/Section7.vue'
   import Section8 from '@/components/Section8.vue'
+
+  // L113. 動的コンポーネントについて
+  import Home from '@/components/Section8Home.vue'
+  import About from '@/components/Section8About.vue'
 
   export default {
     name: 'App',
@@ -107,11 +120,14 @@
     data() {
       return {
         number: 10,
-        my_title: "nice_title"
+        my_title: "nice_title",
+        currentComp: "Home"
       }
     },
     components: {
-      Section8
+      Section8,
+      Home,
+      About
     }
   }
 </script>
