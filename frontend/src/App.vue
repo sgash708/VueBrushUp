@@ -34,6 +34,9 @@
       <h3>みなさん</h3>
       <h3>はじめまして</h3>
       <p>よろしくお願いします。</p>
+
+      <!-- L106. v-slotはtemplate以外はエラーが出力される -->
+      <!-- <div v-slot:hoge></div> -->
     </Section8>
   </div>
 </template>
