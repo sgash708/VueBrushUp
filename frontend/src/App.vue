@@ -43,18 +43,24 @@
         <p>{{ slotProperty.user.firstName }}</p>
         <p>{{ slotProperty.user.lastName }}</p>
       </template>
+
+      <!-- L110. 動的なスロット名(v-slot:[dataプロパティの何か]) -->
+      <!-- → my_titleの中身を展開した値を、子コンポーネントのnameで受け取る -->
+      <template v-slot:[my_title]>
+        <p>hoge</p>
+      </template>
     </Section8>
 
-    <Section8 v-slot:default="slotProperty">
-      <!-- L108. デフォルトスロットしかないときに、子コンポーネントの値を受け取ることができる -->
-      <!-- → ただ冗長なので、コンポーネント(Section8)にv-slotを直接記述することもできる。 -->
-      <!-- → さらに、コンポーネント上のdefaultも削除してこうなる↓ -->
-      <!-- <Section8 v-slot="slotProperty"><p>{{ slotProperty }}</p></Section8> -->
+    <!-- <Section8 v-slot:default="slotProperty"> -->
+    <!-- L108. デフォルトスロットしかないときに、子コンポーネントの値を受け取ることができる -->
+    <!-- → ただ冗長なので、コンポーネント(Section8)にv-slotを直接記述することもできる。 -->
+    <!-- → さらに、コンポーネント上のdefaultも削除してこうなる↓ -->
+    <!-- <Section8 v-slot="slotProperty"><p>{{ slotProperty }}</p></Section8> -->
 
-      <!-- <template v-slot:default="slotProperty"> -->
-      <p>{{ slotProperty }}</p>
-      <!-- </template> -->
-    </Section8>
+    <!-- <template v-slot:default="slotProperty"> -->
+    <!-- <p>{{ slotProperty }}</p> -->
+    <!-- </template> -->
+    <!-- </Section8> -->
 
     <!-- L109. デフォルトスロットと名前付きスロットは混在できない。 -->
     <!-- <Section8 v-slot="slotProperty">
@@ -96,7 +102,8 @@
     // L100. 子コンポーネントに渡すには、propsでは限界がある
     data() {
       return {
-        number: 10
+        number: 10,
+        my_title: "nice_title"
       }
     },
     components: {

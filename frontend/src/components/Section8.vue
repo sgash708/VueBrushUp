@@ -31,6 +31,8 @@
     <!-- L108. デフォルトスロットにおける -->
     <slot :user="user"></slot>
 
+    <!-- L110. 動的なスロット名では、 -->
+    <slot name="nice_title"></slot>
   </div>
 </template>
 
