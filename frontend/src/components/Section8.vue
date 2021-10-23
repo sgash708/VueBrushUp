@@ -26,6 +26,11 @@
     <!-- L107. slotPropertyを使うことで子コンポーネントにアクセスできる。 -->
     <!-- → 使い方： <slot name="親コンポーネントのv-slotの名前(sl)" :定義したい名前="dataプロパティの何か"></slot> -->
     <slot name="sl" :user="user"></slot>
+
+    <hr>
+    <!-- L108. デフォルトスロットにおける -->
+    <slot :user="user"></slot>
+
   </div>
 </template>
 

@@ -44,6 +44,17 @@
         <p>{{ slotProperty.user.lastName }}</p>
       </template>
     </Section8>
+
+    <Section8 v-slot:default="slotProperty">
+      <!-- L108. デフォルトスロットしかないときに、子コンポーネントの値を受け取ることができる -->
+      <!-- → ただ冗長なので、コンポーネント(Section8)にv-slotを直接記述することもできる。 -->
+      <!-- → さらに、コンポーネント上のdefaultも削除してこうなる↓ -->
+      <!-- <Section8 v-slot="slotProperty"><p>{{ slotProperty }}</p></Section8> -->
+
+      <!-- <template v-slot:default="slotProperty"> -->
+      <p>{{ slotProperty }}</p>
+      <!-- </template> -->
+    </Section8>
   </div>
 </template>
 
