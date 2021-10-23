@@ -12,15 +12,21 @@
     <!-- <Section6></Section6> -->
 
     <!-- <Section7 :total-number="number" @my-click="incrementNumber"></Section7> -->
-    <h1>トータルのいいね数</h1>
-    <h2>{{number}}</h2>
+    <!-- <h1>トータルのいいね数</h1>
+    <h2>{{number}}</h2> -->
 
+    <!-- Section8 -->
+    <Section8 headerText="トータルのいいね数">
+      <!-- <h1>トータルのいいね数</h1>
+      <h1>{{ number }}</h1> -->
+    </Section8>
   </div>
 </template>
 
 <script>
   // import Section6 from '@/components/Section6.vue'
   // import Section7 from '@/components/Section7.vue'
+  import Section8 from '@/components/Section8.vue'
 
   export default {
     name: 'App',
@@ -33,11 +39,11 @@
 
     // L88. 親子間のコンポーネントでデータを受け渡す
     // L90. propsはケバブケースで渡すのがオススメ
-    data() {
-      return {
-        number: 10
-      }
-    },
+    // data() {
+    //   return {
+    //     number: 10
+    //   }
+    // },
     // components: {
     //   Section7
     // },
@@ -46,6 +52,16 @@
     //     this.number = value
     //   }
     // }
+
+    // L100. 子コンポーネントに渡すには、propsでは限界がある
+    data() {
+      return {
+        number: 10
+      }
+    },
+    components: {
+      Section8
+    }
   }
 </script>
 
