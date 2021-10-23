@@ -20,6 +20,15 @@
       <!-- L103. フォールバックコンテンツ(Slotが空の場合) -->
       <!-- <h1>トータルのいいね数</h1>
       <h1>{{ number }}</h1> -->
+
+      <!-- L104. 名前付きスロットの適用はtemplateタグを必ず使う -->
+      <!-- L104. v-slot:引数 -->
+      <template v-slot:title>
+        <h1>トータルのいいね数</h1>
+      </template>
+      <template v-slot:number>
+        <h1>{{ number }}</h1>
+      </template>
     </Section8>
   </div>
 </template>
