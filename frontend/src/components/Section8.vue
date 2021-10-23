@@ -16,6 +16,11 @@
     <!-- L104. 複数の出力箇所を受け取ることで複雑なものにも対応できる -->
     <slot name="title"></slot>
     <slot name="number"></slot>
+
+    <hr>
+    <!-- L105. デフォルトスロットは、名前付きslotを除いて"新しい名前付きスロット"を作成します。 -->
+    <!-- → <slot name="default"></slot> も同じ意味になる -->
+    <slot></slot>
   </div>
 </template>
 

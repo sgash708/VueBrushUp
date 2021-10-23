@@ -29,6 +29,11 @@
       <template v-slot:number>
         <h1>{{ number }}</h1>
       </template>
+
+      <!-- L105. デフォルトスロットについて -->
+      <h3>みなさん</h3>
+      <h3>はじめまして</h3>
+      <p>よろしくお願いします。</p>
     </Section8>
   </div>
 </template>
