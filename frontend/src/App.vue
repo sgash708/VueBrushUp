@@ -49,6 +49,10 @@
       <template v-slot:[my_title]>
         <p>hoge</p>
       </template>
+
+      <template #rep>
+        <p>シャープに置き換えた場合の挙動も同じ</p>
+      </template>
     </Section8>
 
     <!-- <Section8 v-slot:default="slotProperty"> -->

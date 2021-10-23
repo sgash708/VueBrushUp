@@ -31,8 +31,15 @@
     <!-- L108. デフォルトスロットにおける -->
     <slot :user="user"></slot>
 
+    <hr>
     <!-- L110. 動的なスロット名では、親コンポーネントから受け取った引数を展開する -->
     <slot name="nice_title"></slot>
+
+    <hr>
+    <!-- L111. v-slotの置き換えについて -->
+    <slot name="rep">
+      <p>デフォルト値</p>
+    </slot>
   </div>
 </template>
 
