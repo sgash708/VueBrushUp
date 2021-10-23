@@ -17,8 +17,9 @@
 
     <!-- Section8 -->
     <Section8 headerText="hello">
-      <h1>トータルのいいね数</h1>
-      <h1>{{ number }}</h1>
+      <!-- L103. フォールバックコンテンツ(Slotが空の場合) -->
+      <!-- <h1>トータルのいいね数</h1>
+      <h1>{{ number }}</h1> -->
     </Section8>
   </div>
 </template>
