@@ -16,7 +16,7 @@
     <h2>{{number}}</h2> -->
 
     <!-- Section8 -->
-    <Section8>
+    <Section8 headerText="hello">
       <h1>トータルのいいね数</h1>
       <h1>{{ number }}</h1>
     </Section8>
@@ -75,17 +75,16 @@
     margin-top: 60px;
   }
 
-  .red {
+  /* .red {
     color: red;
   }
 
   .bg-blue {
     background-color: blue;
-  }
+  } */
 
-  /*
-div {
-  border: 1px solid blue;
-}
-*/
+
+  /* div {
+    border: 1px solid blue;
+  } */
 </style>
