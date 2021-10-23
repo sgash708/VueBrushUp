@@ -55,6 +55,11 @@
       <p>{{ slotProperty }}</p>
       <!-- </template> -->
     </Section8>
+
+    <!-- L109. デフォルトスロットと名前付きスロットは混在できない。 -->
+    <!-- <Section8 v-slot="slotProperty">
+      <template v-slot:title="slotProperty"></template>
+    </Section8> -->
   </div>
 </template>
 
