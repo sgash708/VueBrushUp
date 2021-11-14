@@ -8,24 +8,31 @@ import 'leaflet/dist/leaflet.css'
 // L71. 開発用のコメント出力
 Vue.config.productionTip = false
 // L132. グローバルにカスタムディレクティブに登録
-Vue.directive("border", {
-  /** Hook関数 */
-  // bind/updateが重要となる
-  bind(el, binding, vnode) {
-    // ディレクティブが初めて対象の要素に紐づいたとき
-  },
-  inserted(el, binding, vnode) {
-    // 親Nodeに挿入された時
-  },
-  update(el, binding, vnode, oldVnode) {
-    // コンポーネントが更新される。子コンポーネントの仮想DOMが更新される前。
-  },
-  componentUpdated(el, binding, vnode, oldVnode) {
-    // コンポーネントが更新される。子コンポーネントが更新される後。
-  },
-  unbind(el, binding, vnode) {
-    // ディレクティブが紐づいている要素から取り除かれた時。
-  },
+// L135. Vue.directive("v-000000の0000部分", オブジェクトもしくは省略記法を用いた関数)
+// Vue.directive("border", {
+/** Hook関数 */
+// bind/updateが重要となる
+// bind(el, binding, vnode) {
+// ディレクティブが初めて対象の要素に紐づいたとき
+// },
+// inserted(el, binding, vnode) {
+//   // 親Nodeに挿入された時
+// },
+// update(el, binding, vnode, oldVnode) {
+// コンポーネントが更新される。子コンポーネントの仮想DOMが更新される前。
+// }
+// componentUpdated(el, binding, vnode, oldVnode) {
+//   // コンポーネントが更新される。子コンポーネントが更新される後。
+// },
+// unbind(el, binding, vnode) {
+//   // ディレクティブが紐づいている要素から取り除かれた時。
+// },
+// });
+
+// L135. カスタムディレクティブの省略記法について
+// → bind/updateの省略記号
+Vue.directive("border", function (el, binding) {
+
 });
 
 /*
