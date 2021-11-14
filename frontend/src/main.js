@@ -36,7 +36,11 @@ Vue.directive("border", function (el, binding) {
   el.style.border = "solid black 2px";
   // L137. Section10.vueから、データの受け取りができる
   // → binding.valueで渡す
-  el.style.borderWidth = binding.value;
+  // el.style.borderWidth = binding.value;
+
+  // L138. 複数の値を受け取るには、value.プロパティ名で取り出す
+  el.style.borderWidth = binding.value.width;
+  el.style.borderColor = binding.value.color;
 });
 
 /*
