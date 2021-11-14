@@ -11,7 +11,11 @@
     <!-- L139. 引数を「v-カスタムディレクティブ:引数」のように渡すこともできる -->
     <!-- → dottedは、点線にするということ -->
     <!-- → [注意] 引数は1つしか取れない！！ -->
-    <p v-border:dotted="{width: '10px', color: 'brown'}">Section10</p>
+    <!-- <p v-border:dotted="{width: '10px', color: 'brown'}">Section10</p> -->
+
+    <!-- L140. カスタムディレクティブの修飾子は続けられる -->
+    <!-- → round.shadow -->
+    <p v-border:solid.round.shadow="{width: '10px', color: 'brown'}">Section10</p>
   </div>
 </template>
 

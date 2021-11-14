@@ -45,6 +45,17 @@ Vue.directive("border", function (el, binding) {
   el.style.borderWidth = binding.value.width;
   el.style.borderColor = binding.value.color;
   el.style.borderStyle = binding.arg;
+
+  // L140. binding.modifiers.xxxx: roundが修飾子として存在しているか
+  // → booleanを返す
+  if (binding.modifiers.round) {
+    // 角を削る
+    el.style.borderRadius = "0.5rem";
+  }
+  if (binding.modifiers.shadow) {
+    // 影をつける
+    el.style.boxShadow = "0 2px 5px rgba(0, 0, 0, 0.26)";
+  }
 });
 
 /*
