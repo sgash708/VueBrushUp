@@ -4,6 +4,9 @@ import Vue from 'vue'
 import App from './App.vue'
 import router from './router'
 import 'leaflet/dist/leaflet.css'
+import {
+  bind
+} from 'leaflet'
 
 // L71. 開発用のコメント出力
 Vue.config.productionTip = false
@@ -33,7 +36,7 @@ Vue.config.productionTip = false
 // → bind/updateの省略記号
 Vue.directive("border", function (el, binding) {
   // L136. HTML要素の1つ(el)
-  el.style.border = "solid black 2px";
+  // el.style.border = "solid black 2px";
   // L137. Section10.vueから、データの受け取りができる
   // → binding.valueで渡す
   // el.style.borderWidth = binding.value;
@@ -41,6 +44,7 @@ Vue.directive("border", function (el, binding) {
   // L138. 複数の値を受け取るには、value.プロパティ名で取り出す
   el.style.borderWidth = binding.value.width;
   el.style.borderColor = binding.value.color;
+  el.style.borderStyle = binding.arg;
 });
 
 /*
