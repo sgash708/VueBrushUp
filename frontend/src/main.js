@@ -34,6 +34,9 @@ Vue.config.productionTip = false
 Vue.directive("border", function (el, binding) {
   // L136. HTML要素の1つ(el)
   el.style.border = "solid black 2px";
+  // L137. Section10.vueから、データの受け取りができる
+  // → binding.valueで渡す
+  el.style.borderWidth = binding.value;
 });
 
 /*
