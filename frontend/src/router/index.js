@@ -6,6 +6,7 @@ import Section2 from '@/components/Section2'
 import Section3 from '@/components/Section3'
 import Section6 from '@/components/Section6'
 import Section7 from '@/components/Section7'
+import Section9 from '@/components/Section9'
 
 Vue.use(Router)
 
@@ -36,6 +37,11 @@ export default new Router({
         // totalNumber: 10
         testProps: "test"
       }
+    },
+    {
+      path: '/section9',
+      name: 'Section9',
+      component: Section9,
     },
     {
       path: '/map',
