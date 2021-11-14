@@ -24,6 +24,11 @@
     <textarea name="detail" id="detail" cols="30" rows="10" v-model="eventData.detail"></textarea>
     <pre>{{ eventData.detail }}</pre>
     <p style="white-space: pre;">{{ eventData.detail }}</p>
+
+    <!-- L124. 単体のチェックボックスにv-modelを突っ込んだ時はbooleannになる -->
+    <input type="checkbox" id="isPrivate" v-model="eventData.isPrivate">
+    <label for="isPrivate">非公開</label>
+    <p>{{ eventData.isPrivate }}</p>
   </div>
 </template>
 
@@ -35,7 +40,8 @@
           title: "ほげ",
           maxNumber: 0,
           host: "hoge",
-          detail: "detail"
+          detail: "detail",
+          isPrivate: false
         }
       }
     }
