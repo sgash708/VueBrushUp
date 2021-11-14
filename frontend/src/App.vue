@@ -85,6 +85,13 @@
       <!-- → 動的コンポーネントは状態を保持しないのでコンポーネントを切り替えたら削除される点に注意すること -->
       <component :is="currentComp"></component>
     </keep-alive>
+
+    <!-- L129. componentにv-modelを導入するとどうなるか-->
+    <EventTitle v-model="eventData.title"></EventTitle>
+    <label for="title">タイトル</label>
+    <input id="title" type="text" v-model.lazy="eventData.title">
+    <pre>{{eventData.title}}</pre>
+    <!-- <EventTitle :value="eventData.title" @input="eventData.title = $event"></EventTitle> -->
   </div>
 </template>
 
@@ -96,6 +103,9 @@
   // L113. 動的コンポーネントについて
   import Home from '@/components/Section8Home.vue'
   import About from '@/components/Section8About.vue'
+
+  // L129. 
+  import EventTitle from "@/components/Section9EventTitle.vue";
 
   export default {
     name: 'App',
@@ -127,13 +137,17 @@
       return {
         number: 10,
         my_title: "nice_title",
-        currentComp: "Home"
+        currentComp: "Home",
+        eventData: {
+          title: "ほげ"
+        }
       }
     },
     components: {
       Section8,
       Home,
-      About
+      About,
+      EventTitle
     }
   }
 </script>
