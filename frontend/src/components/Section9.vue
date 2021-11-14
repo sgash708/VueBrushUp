@@ -29,6 +29,16 @@
     <input type="checkbox" id="isPrivate" v-model="eventData.isPrivate">
     <label for="isPrivate">非公開</label>
     <p>{{ eventData.isPrivate }}</p>
+
+    <!-- L125. 複数のチェックボックスは"配列"を使用する -->
+    <p>参加条件</p>
+    <input type="checkbox" id="10" value="10代" v-model="eventData.target">
+    <label for="10">10代</label>
+    <input type="checkbox" id="20" value="20代" v-model="eventData.target">
+    <label for="20">20代</label>
+    <input type="checkbox" id="30" value="30代" v-model="eventData.target">
+    <label for="30">30代</label>
+    <pre>{{ eventData.target }}</pre>
   </div>
 </template>
 
@@ -41,7 +51,10 @@
           maxNumber: 0,
           host: "hoge",
           detail: "detail",
-          isPrivate: false
+          // L124. 単体チェックボックスはboolean
+          isPrivate: false,
+          // L125. 複数チェック沒k巣は配列にする
+          target: []
         }
       }
     }
