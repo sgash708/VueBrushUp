@@ -39,6 +39,14 @@
     <input type="checkbox" id="30" value="30代" v-model="eventData.target">
     <label for="30">30代</label>
     <pre>{{ eventData.target }}</pre>
+
+    <p>参加費</p>
+    <input type="radio" name="free" id="free" value="無料" v-model="eventData.price">
+    <label for="free">無料</label>
+    <input type="radio" name="free" id="paid" value="有料" v-model="eventData.price">
+    <label for="paid">有料</label>
+
+    <p>{{ eventData.price }}</p>
   </div>
 </template>
 
@@ -54,7 +62,8 @@
           // L124. 単体チェックボックスはboolean
           isPrivate: false,
           // L125. 複数チェック沒k巣は配列にする
-          target: []
+          target: [],
+          price: "無料"
         }
       }
     }
