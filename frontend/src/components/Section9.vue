@@ -18,6 +18,12 @@
     <input id="host" type="text" v-model.trim="eventData.host">
     <!-- L122. htmlは空白を認識しづらいのでpreタグで検証してみる -->
     <pre>{{ eventData.host }}</pre>
+
+    <!-- L123. textareaで複数行の双方向バインディング -->
+    <label for="detail">イベントの内容</label>
+    <textarea name="detail" id="detail" cols="30" rows="10" v-model="eventData.detail"></textarea>
+    <pre>{{ eventData.detail }}</pre>
+    <p style="white-space: pre;">{{ eventData.detail }}</p>
   </div>
 </template>
 
@@ -28,7 +34,8 @@
         eventData: {
           title: "ほげ",
           maxNumber: 0,
-          host: "hoge"
+          host: "hoge",
+          detail: "detail"
         }
       }
     }
