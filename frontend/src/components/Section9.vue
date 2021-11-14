@@ -1,5 +1,6 @@
 <template>
   <div>
+    <!-- <div style="padding: 10rem;"> -->
     <h2>イベントのフォーム</h2>
     <!-- L119. 動的に値を書き換えることができる -->
     <!-- L120. ".lazy": focusが外れた時(changeイベント)で発火する -->
@@ -40,13 +41,24 @@
     <label for="30">30代</label>
     <pre>{{ eventData.target }}</pre>
 
+    <!-- L126. チェックボックスのradioボタンの使い方 -->
     <p>参加費</p>
     <input type="radio" name="free" id="free" value="無料" v-model="eventData.price">
     <label for="free">無料</label>
     <input type="radio" name="free" id="paid" value="有料" v-model="eventData.price">
     <label for="paid">有料</label>
-
     <p>{{ eventData.price }}</p>
+
+    <!-- L127. セレクトタグの双方向バインディング -->
+    <p>開催場所</p>
+    <!-- L127. 選択したoptionタグをv-modelとして受け取る -->
+    <!-- → "multiple" によって複数選択可能 -->
+    <!-- → shift押しながらなど -->
+    <select v-model="eventData.location" multiple>
+      <!-- L127. v-forによって繰り返し出力 -->
+      <option v-for="location in locations" :key="location">{{ location }}</option>
+    </select>
+    <p>{{ eventData.location }}</p>
   </div>
 </template>
 
@@ -63,8 +75,12 @@
           isPrivate: false,
           // L125. 複数チェック沒k巣は配列にする
           target: [],
-          price: "無料"
-        }
+          price: "無料",
+          location: "東京"
+          // 複数選択時には、配列として受け取る前提で宣言すること
+          // location: []
+        },
+        locations: ["東京", "大阪", "名古屋"]
       }
     }
   }
