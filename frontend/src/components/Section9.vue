@@ -6,12 +6,18 @@
     <!-- → メールアドレスの入力バリデーションなどはUXのために使うことができる -->
     <label for="title">タイトル</label>
     <input id="title" type="text" v-model.lazy="eventData.title">
-    <p>{{eventData.title}}</p>
+    <pre>{{eventData.title}}</pre>
 
     <!-- L121. ".number": カウントアップした時にstring型になってしまうのを防ぐ -->
     <label for="maxNumber">最大人数</label>
     <input id="maxNumber" type="number" v-model.number="eventData.maxNumber">
     <p>{{ typeof(eventData.maxNumber) }}</p>
+
+    <!-- L122. ".trim": 入力値の前後の空白を削除する -->
+    <label for="host">主催者</label>
+    <input id="host" type="text" v-model.trim="eventData.host">
+    <!-- L122. htmlは空白を認識しづらいのでpreタグで検証してみる -->
+    <pre>{{ eventData.host }}</pre>
   </div>
 </template>
 
@@ -22,6 +28,7 @@
         eventData: {
           title: "ほげ",
           maxNumber: 0,
+          host: "hoge"
         }
       }
     }
