@@ -92,6 +92,8 @@
     <input id="title" type="text" v-model.lazy="eventData.title">
     <pre>{{eventData.title}}</pre>
     <!-- <EventTitle :value="eventData.title" @input="eventData.title = $event"></EventTitle> -->
+
+    <Section10></Section10>
   </div>
 </template>
 
@@ -106,6 +108,9 @@
 
   // L129. 
   import EventTitle from "@/components/Section9EventTitle.vue";
+
+  // L136. elプロパティの使い方
+  import Section10 from "@/components/Section10.vue";
 
   export default {
     name: 'App',
@@ -147,7 +152,8 @@
       Section8,
       Home,
       About,
-      EventTitle
+      EventTitle,
+      Section10
     }
   }
 </script>

@@ -32,7 +32,8 @@ Vue.config.productionTip = false
 // L135. カスタムディレクティブの省略記法について
 // → bind/updateの省略記号
 Vue.directive("border", function (el, binding) {
-
+  // L136. HTML要素の1つ(el)
+  el.style.border = "solid black 2px";
 });
 
 /*
