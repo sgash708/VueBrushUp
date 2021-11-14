@@ -1,6 +1,5 @@
 <template>
   <div>
-    <!-- <div style="padding: 10rem;"> -->
     <h2>イベントのフォーム</h2>
     <!-- L119. 動的に値を書き換えることができる -->
     <!-- L120. ".lazy": focusが外れた時(changeイベント)で発火する -->
@@ -59,6 +58,17 @@
       <option v-for="location in locations" :key="location">{{ location }}</option>
     </select>
     <p>{{ eventData.location }}</p>
+
+    <!-- L128. v-modelの中身について -->
+    <h2>イベントのフォーム</h2>
+    <label for="vModelTitle">タイトル</label>
+    <!-- L128. ":value"と"@input"の記述を省略している -->
+    <!-- → [注意] input:textのみ適用範囲となる -->
+    <input id="vModelTitle" type="text" :value="eventData.vModelTitle"
+      @input="eventData.vModelTitle = $event.target.value">
+    <!-- "lazy"は、"@change" -->
+    <!-- @change="eventData.vModelTitle = $event.target.value"> -->
+    <pre>{{eventData.vModelTitle}}</pre>
   </div>
 </template>
 
@@ -76,9 +86,10 @@
           // L125. 複数チェック沒k巣は配列にする
           target: [],
           price: "無料",
-          location: "東京"
-          // 複数選択時には、配列として受け取る前提で宣言すること
+          location: "東京",
+          // L127. 複数選択時には、配列として受け取る前提で宣言すること
           // location: []
+          vModelTitle: "中身"
         },
         locations: ["東京", "大阪", "名古屋"]
       }
