@@ -11,5 +11,9 @@ export const sec11TokyoNumber = {
     lowerCase(value) {
       return value.toLowerCase();
     }
+  },
+  // L152. lifecycle被りはどうなるか
+  created() {
+    console.log("created in mixin");
   }
 }

@@ -13,6 +13,17 @@
   import { sec11TokyoNumber } from '@/mixin/sec11TokyoNumber.js';
 
   export default {
-    mixins: [sec11TokyoNumber]
+    mixins: [sec11TokyoNumber],
+    data() {
+      return {
+        // L152. [重要] mixin要素が被った際には、コンポーネントが優先される。
+        title: 'Welcome to newyork',
+      }
+    },
+    // L152. createdの優先度は、"mixin.craeted()" -> "component.created()" となる
+    // ライフサイクルも、mixinが優先
+    created() {
+      console.log('created in component');
+    }
   }
 </script>
