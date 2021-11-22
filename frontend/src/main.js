@@ -87,7 +87,11 @@ Vue.config.productionTip = false
 // });
 
 // L145. filter: 各コンポーネント内で使用することができる。DRYになる。
-Vue.filter("upperCase", (value) => value.toUpperCase());
+Vue.filter("upperCase", (value) => {
+  // L149. 再描画が少ないコンポーネントで使用すること
+  console.log("フィルタ");
+  return value.toUpperCase();
+});
 
 new Vue({
   router,
