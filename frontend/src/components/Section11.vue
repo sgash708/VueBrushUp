@@ -20,37 +20,56 @@
     <!-- -> 冗長を避けるにも注意。 -->
     <p>{{ number }}</p>
     <button @click="number++">+1</button>
+
+    <p>{{ otherNums }}</p>
+    <button @click="hogeInc">+1</button>
   </div>
 </template>
 
 <script>
+  // L150. コードの共有しているので被っていない要素だけ変更すれば良い。
+  import { sec11TokyoNumber } from '@/sec11TokyoNumber.js';
+
   export default {
+    // L150. 不足要素だけ変更
+    mixins: [sec11TokyoNumber],
     data() {
       return {
-        title: "Welcome to tokyo",
-        subTitle: "Tokyo is a great city",
-        number: 0
-      };
+        otherNums: 1
+      }
     },
-    // L145. titleの大文字化だけでなく、subtitleの大文字化もしたい場合問題が生じる。
-    // -> 2つcomputedプロパティを記述する必要が出てくる。
-    // -> [注意] computedは引数を持たせられない。
-    // computed: {
-    //   upperCaseTitle() {
-    //     return this.title.toUpperCase();
-    //   },
-    //   // upperCaseSubTitle() {}
-    // }
-
-    // L146. コンポーネント内で定義することもできる
-    filters: {
-      lowerCase(value) {
-        // L148. [注意] filters内では、this.titleのようにできない
-        // -> DIして使うこと。下記は不可能。
-        // return this.title.toLowerCase();
-
-        return value.toLowerCase();
+    methods: {
+      hogeInc() {
+        this.otherNums++;
       }
     }
+
+    // data() {
+    //   return {
+    //     title: "Welcome to tokyo",
+    //     subTitle: "Tokyo is a great city",
+    //     number: 0
+    //   };
+    // },
+    // // L145. titleの大文字化だけでなく、subtitleの大文字化もしたい場合問題が生じる。
+    // // -> 2つcomputedプロパティを記述する必要が出てくる。
+    // // -> [注意] computedは引数を持たせられない。
+    // // computed: {
+    // //   upperCaseTitle() {
+    // //     return this.title.toUpperCase();
+    // //   },
+    // //   // upperCaseSubTitle() {}
+    // // }
+
+    // // L146. コンポーネント内で定義することもできる
+    // filters: {
+    //   lowerCase(value) {
+    //     // L148. [注意] filters内では、this.titleのようにできない
+    //     // -> DIして使うこと。下記は不可能。
+    //     // return this.title.toLowerCase();
+
+    //     return value.toLowerCase();
+    //   }
+    // }
   }
 </script>
