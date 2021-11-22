@@ -87,10 +87,26 @@ Vue.config.productionTip = false
 // });
 
 // L145. filter: 各コンポーネント内で使用することができる。DRYになる。
-Vue.filter("upperCase", (value) => {
+Vue.filter('upperCase', (value) => {
   // L149. 再描画が少ないコンポーネントで使用すること
-  console.log("フィルタ");
+  console.log('フィルタ');
   return value.toUpperCase();
+});
+// L153. グローバルmixin: 全てのVueインスタンスに適用される。
+// -> コンポーネントでの使用/未使用を選択できない
+// -> 基本的には使わなくて良い。使用例としてはプラグイン作成など。
+Vue.mixin({
+  created() {
+    // 
+    /**、
+     * Global mixin
+     * -> mixin
+     * -> component
+     *
+     * の順で発火する。
+     */
+    console.log('global mixin');
+  }
 });
 
 new Vue({
