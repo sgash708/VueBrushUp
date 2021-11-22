@@ -12,6 +12,10 @@
   // L150. コンポーネント間で、コードを共有することができる
   import { sec11TokyoNumber } from '@/mixin/sec11TokyoNumber.js';
 
+  /** L152. [重要] 優先度
+   * data     : components -> mixin
+   * lifecycle: mixin      -> components
+  */ L152. 
   export default {
     mixins: [sec11TokyoNumber],
     data() {
@@ -20,8 +24,8 @@
         title: 'Welcome to newyork',
       }
     },
-    // L152. createdの優先度は、"mixin.craeted()" -> "component.created()" となる
-    // ライフサイクルも、mixinが優先
+    // L152. [注意] createdの優先度は、"mixin.craeted()" -> "component.created()" となる
+    // -> ライフサイクルは、mixinが優先
     created() {
       console.log('created in component');
     }
