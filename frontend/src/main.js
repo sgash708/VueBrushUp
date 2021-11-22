@@ -4,12 +4,40 @@ import Vue from 'vue'
 import App from './App.vue'
 import router from './router'
 import 'leaflet/dist/leaflet.css'
-import {
-  bind
-} from 'leaflet'
+// import {
+//   bind
+// } from 'leaflet'
 
 // L71. 開発用のコメント出力
 Vue.config.productionTip = false
+// L77. ローカルコンポーネント
+// var component = {
+//   data() {
+//     return {
+//       number: 12
+//     }
+//   }
+// }
+/*
+  L78. "App"の中身はこんな感じ
+  {
+    "name": "App",
+    "staticRenderFns": [],
+    "_compiled": true,
+    "beforeCreate": [
+      null,
+      null
+    ],
+    "__file": "src/App.vue",
+    "beforeDestroy": [
+      null
+    ],
+    "_Ctor": {}
+  }
+
+  console.log(App);
+ */
+
 // L132. グローバルにカスタムディレクティブに登録
 // L135. Vue.directive("v-000000の0000部分", オブジェクトもしくは省略記法を用いた関数)
 // Vue.directive("border", {
@@ -58,33 +86,8 @@ Vue.config.productionTip = false
 //   }
 // });
 
-/*
-  L78. "App"の中身はこんな感じ
-  {
-    "name": "App",
-    "staticRenderFns": [],
-    "_compiled": true,
-    "beforeCreate": [
-      null,
-      null
-    ],
-    "__file": "src/App.vue",
-    "beforeDestroy": [
-      null
-    ],
-    "_Ctor": {}
-  }
- */
-console.log(App)
-
-// L77. ローカルコンポーネント
-// var component = {
-//   data() {
-//     return {
-//       number: 12
-//     }
-//   }
-// }
+// L145. filter: 各コンポーネント内で使用することができる。DRYになる。
+Vue.filter("upperCase", (value) => value.toUpperCase());
 
 // #appは、index.htmlに挿入される。
 new Vue({
