@@ -15,7 +15,7 @@
   /** L152. [重要] 優先度
    * data     : components -> mixin
    * lifecycle: mixin      -> components
-  */ L152. 
+  */
   export default {
     mixins: [sec11TokyoNumber],
     data() {
