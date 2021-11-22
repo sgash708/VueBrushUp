@@ -10,7 +10,7 @@
 
 <script>
   // L150. コンポーネント間で、コードを共有することができる
-  import { sec11TokyoNumber } from '@/sec11TokyoNumber.js';
+  import { sec11TokyoNumber } from '@/mixin/sec11TokyoNumber.js';
 
   export default {
     mixins: [sec11TokyoNumber]

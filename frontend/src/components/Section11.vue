@@ -28,7 +28,7 @@
 
 <script>
   // L150. コードの共有しているので被っていない要素だけ変更すれば良い。
-  import { sec11TokyoNumber } from '@/sec11TokyoNumber.js';
+  import { sec11TokyoNumber } from '@/mixin/sec11TokyoNumber.js';
 
   export default {
     // L150. 不足要素だけ変更
