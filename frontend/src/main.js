@@ -89,7 +89,6 @@ Vue.config.productionTip = false
 // L145. filter: 各コンポーネント内で使用することができる。DRYになる。
 Vue.filter("upperCase", (value) => value.toUpperCase());
 
-// #appは、index.htmlに挿入される。
 new Vue({
   router,
   render: h => h(App),
@@ -99,4 +98,4 @@ new Vue({
   // components: {
   //   'my-component': component
   // }
-}).$mount('#app');
+}).$mount('#app'); // #appは、index.htmlに挿入される。
