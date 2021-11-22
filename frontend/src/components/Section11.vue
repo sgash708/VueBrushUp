@@ -36,6 +36,9 @@
     // L146. コンポーネント内で定義することもできる
     filters: {
       lowerCase(value) {
+        // L148. [注意] filters内では、this.titleのようにできない
+        // -> DIして使うこと。下記は不可能。
+        // return this.title.toLowerCase();
         return value.toLowerCase();
       }
     }
