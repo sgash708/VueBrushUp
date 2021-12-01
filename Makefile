@@ -7,4 +7,4 @@ down:
 exec:
 	docker-compose exec vuejs sh
 log:
-	docker log vuejs
+	docker logs vuejs
